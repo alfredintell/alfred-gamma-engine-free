@@ -1,0 +1,109 @@
+{
+  "symbol": "NQ_GAMMA_LEVELS",
+  "market": "NQ",
+  "source": "FREE_PROXY_YAHOO",
+  "source_detail": "Nasdaq proxy using QQQ options; scaled by NQ=F/QQQ ratio. Not exact CME futures options.",
+  "generated_at_utc": "2026-05-11T20:03:04.353314+00:00",
+  "option_ticker": "QQQ",
+  "future_ticker": "NQ=F",
+  "option_spot": 713.29,
+  "futures_spot": 29425.5,
+  "scale_ratio": 41.25320824,
+  "nearest_expiry": "2026-05-11",
+  "call_wall": 29496.04,
+  "put_wall": 29289.78,
+  "hvl_gamma_flip": 29392.91,
+  "front_call_wall": 29496.04,
+  "front_put_wall": 29289.78,
+  "front_gamma_wall": 29413.54,
+  "expected_move_high": 29475.42,
+  "expected_move_low": 29375.58,
+  "expected_move_points": 49.92,
+  "net_gex_regime": "Positive",
+  "total_call_gex": 7285199640.72,
+  "total_put_gex": 4818521102.92,
+  "total_net_gex": 2466678537.81,
+  "gex_levels": [
+    {
+      "rank": 1,
+      "strike_proxy": 715.0,
+      "level": 29496.04,
+      "type": "positive",
+      "net_gex": 737324985.82,
+      "abs_gex": 1043183781.78
+    },
+    {
+      "rank": 2,
+      "strike_proxy": 710.0,
+      "level": 29289.78,
+      "type": "positive",
+      "net_gex": 106541728.17,
+      "abs_gex": 985519232.25
+    },
+    {
+      "rank": 3,
+      "strike_proxy": 713.0,
+      "level": 29413.54,
+      "type": "positive",
+      "net_gex": 736628318.31,
+      "abs_gex": 912109364.31
+    },
+    {
+      "rank": 4,
+      "strike_proxy": 705.0,
+      "level": 29083.51,
+      "type": "positive",
+      "net_gex": 91446549.68,
+      "abs_gex": 637136496.63
+    },
+    {
+      "rank": 5,
+      "strike_proxy": 700.0,
+      "level": 28877.25,
+      "type": "positive",
+      "net_gex": 297523.16,
+      "abs_gex": 625392749.37
+    },
+    {
+      "rank": 6,
+      "strike_proxy": 720.0,
+      "level": 29702.31,
+      "type": "positive",
+      "net_gex": 489604194.65,
+      "abs_gex": 549080363.19
+    },
+    {
+      "rank": 7,
+      "strike_proxy": 690.0,
+      "level": 28464.71,
+      "type": "negative",
+      "net_gex": -62704970.46,
+      "abs_gex": 428332187.73
+    },
+    {
+      "rank": 8,
+      "strike_proxy": 725.0,
+      "level": 29908.58,
+      "type": "positive",
+      "net_gex": 406707754.63,
+      "abs_gex": 419860785.0
+    },
+    {
+      "rank": 9,
+      "strike_proxy": 695.0,
+      "level": 28670.98,
+      "type": "positive",
+      "net_gex": 108533574.35,
+      "abs_gex": 383244240.4
+    },
+    {
+      "rank": 10,
+      "strike_proxy": 712.0,
+      "level": 29372.28,
+      "type": "positive",
+      "net_gex": 114421178.92,
+      "abs_gex": 339033705.61
+    }
+  ],
+  "warnings": []
+}

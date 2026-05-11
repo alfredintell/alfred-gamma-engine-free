@@ -1,0 +1,22 @@
+// Alfred Gamma Engine manual backup — NQ
+// Source: FREE_PROXY_YAHOO
+// Generated: 2026-05-11T20:03:04.353314+00:00
+Call Resistance / Call Wall: 29496.04
+Put Support / Put Wall: 29289.78
+HVL / Gamma Flip: 29392.91
+0DTE/Front Call Wall: 29496.04
+0DTE/Front Put Wall: 29289.78
+0DTE/Front Gamma Wall: 29413.54
+1D Max / EM High: 29475.42
+1D Min / EM Low: 29375.58
+Net GEX Regime: Positive
+GEX 1: 29496.04 (positive)
+GEX 2: 29289.78 (positive)
+GEX 3: 29413.54 (positive)
+GEX 4: 29083.51 (positive)
+GEX 5: 28877.25 (positive)
+GEX 6: 29702.31 (positive)
+GEX 7: 28464.71 (negative)
+GEX 8: 29908.58 (positive)
+GEX 9: 28670.98 (positive)
+GEX 10: 29372.28 (positive)
