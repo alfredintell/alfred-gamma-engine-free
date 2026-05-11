@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alfred Gamma Feed</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; }
+    body { margin:0; background:#070b14; color:#e5eefc; }
+    .wrap { max-width:1100px; margin:0 auto; padding:28px; }
+    .head { display:flex; justify-content:space-between; gap:16px; align-items:end; margin-bottom:20px; }
+    h1 { margin:0; font-size:26px; letter-spacing:.02em; }
+    .sub { color:#8ea0ba; margin-top:8px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px,1fr)); gap:12px; }
+    .card { background:#101827; border:1px solid #1f314d; border-radius:16px; padding:16px; box-shadow:0 12px 35px rgba(0,0,0,.24); }
+    .k { color:#8ea0ba; font-size:12px; text-transform:uppercase; letter-spacing:.08em; }
+    .v { font-size:24px; margin-top:8px; font-weight:800; }
+    .small { font-size:13px; color:#a9b8d0; line-height:1.5; }
+    button, select, input { background:#16223a; color:#e5eefc; border:1px solid #294268; border-radius:10px; padding:10px 12px; }
+    .warn { color:#ffd166; }
+    table { width:100%; border-collapse:collapse; margin-top:12px; }
+    td, th { padding:10px; border-bottom:1px solid #1e304b; text-align:left; }
+    th { color:#8ea0ba; font-size:12px; text-transform:uppercase; }
+    .tag { display:inline-block; padding:4px 8px; border-radius:999px; background:#1e304b; color:#bcd0ea; font-size:12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h1>Alfred Gamma Feed</h1>
+        <div class="sub">Free proxy gamma levels. QQQ→NQ, SPY→ES. Not MenthorQ. Not exact CME options.</div>
+      </div>
+      <div>
+        <select id="market"><option>NQ</option><option>ES</option></select>
+        <input id="rawUrl" placeholder="Raw GitHub JSON URL optional" size="40" />
+        <button onclick="loadData()">Load</button>
+      </div>
+    </div>
+    <div id="status" class="small warn">Paste your raw GitHub JSON URL after setup, or open a local JSON file through a dev server.</div>
+    <div class="grid" id="levels"></div>
+    <div class="card" style="margin-top:12px">
+      <div class="k">GEX Levels</div>
+      <table id="gex"><thead><tr><th>Rank</th><th>Level</th><th>Type</th><th>Net GEX</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <div class="k">How to use</div>
+      <div class="small">
+        <p><b>Call Wall</b>: upside resistance first. Acceptance above can squeeze.</p>
+        <p><b>Put Wall</b>: downside support first. Acceptance below can flush.</p>
+        <p><b>HVL/Gamma Flip</b>: regime pivot. Above often behaves more pinned/positive-gamma; below often behaves more expansion/negative-gamma.</p>
+        <p><b>GEX levels</b>: reaction/magnet zones. Use with AlfredsEye structure, sweeps, VWAP, and Master Conviction.</p>
+      </div>
+    </div>
+  </div>
+<script>
+async function loadData(){
+  const market = document.getElementById('market').value.toLowerCase();
+  let url = document.getElementById('rawUrl').value.trim();
+  if(!url) url = `../out/latest_${market}.json`;
+  const status = document.getElementById('status');
+  try{
+    const res = await fetch(url, {cache:'no-store'});
+    if(!res.ok) throw new Error(res.status + ' ' + res.statusText);
+    const d = await res.json();
+    status.textContent = `${d.market} loaded • ${d.source} • generated ${d.generated_at_utc}`;
+    status.classList.remove('warn');
+    const keys = [
+      ['Call Wall', d.call_wall], ['Put Wall', d.put_wall], ['HVL / Gamma Flip', d.hvl_gamma_flip],
+      ['Front Call Wall', d.front_call_wall], ['Front Put Wall', d.front_put_wall], ['Front Gamma Wall', d.front_gamma_wall],
+      ['1D Max', d.expected_move_high], ['1D Min', d.expected_move_low], ['Net GEX', d.net_gex_regime]
+    ];
+    document.getElementById('levels').innerHTML = keys.map(([k,v])=>`<div class="card"><div class="k">${k}</div><div class="v">${v ?? '-'}</div></div>`).join('');
+    document.querySelector('#gex tbody').innerHTML = (d.gex_levels||[]).map(g=>`<tr><td>${g.rank}</td><td>${g.level}</td><td><span class="tag">${g.type}</span></td><td>${g.net_gex}</td></tr>`).join('');
+  } catch(e){
+    status.textContent = 'Could not load JSON: ' + e.message;
+    status.classList.add('warn');
+  }
+}
+loadData();
+</script>
+</body>
+</html>

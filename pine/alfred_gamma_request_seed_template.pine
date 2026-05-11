@@ -1,0 +1,22 @@
+//@version=6
+indicator("Alfred Gamma Feed request.seed template", overlay=true)
+
+// TradingView notice: New Pine Seeds repo creation is currently unavailable.
+// This file is only useful if you already have an active Pine Seeds repo.
+
+seedRepo = input.string("seed_YOURNAME_gamma", "Pine Seeds repo")
+market = input.string("NQ", "Market", options=["NQ", "ES"])
+
+callWall = request.seed(seedRepo, market + "_CALL_WALL", close)
+putWall = request.seed(seedRepo, market + "_PUT_WALL", close)
+hvl = request.seed(seedRepo, market + "_HVL", close)
+frontCallWall = request.seed(seedRepo, market + "_FRONT_CALL_WALL", close)
+frontPutWall = request.seed(seedRepo, market + "_FRONT_PUT_WALL", close)
+frontGammaWall = request.seed(seedRepo, market + "_FRONT_GAMMA_WALL", close)
+
+plot(callWall, "Call Wall", color=color.red, linewidth=2, style=plot.style_stepline)
+plot(putWall, "Put Wall", color=color.teal, linewidth=2, style=plot.style_stepline)
+plot(hvl, "HVL / Gamma Flip", color=color.yellow, linewidth=2, style=plot.style_stepline)
+plot(frontCallWall, "Front Call Wall", color=color.new(color.red, 25), linewidth=1, style=plot.style_stepline)
+plot(frontPutWall, "Front Put Wall", color=color.new(color.teal, 25), linewidth=1, style=plot.style_stepline)
+plot(frontGammaWall, "Front Gamma Wall", color=color.fuchsia, linewidth=1, style=plot.style_stepline)
