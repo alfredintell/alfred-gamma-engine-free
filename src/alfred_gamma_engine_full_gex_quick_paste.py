@@ -139,11 +139,20 @@ def _nearest_value(vals: List[float], fallback: float) -> float:
 
 
 def _top_strikes(exposure_df: pd.DataFrame, n: int, current_price: float, scale_ratio: float, tick: float) -> List[float]:
+    """
+    Rank GEX levels by a blended score:
+    - total_gex catches the biggest option magnets/walls
+    - abs(net_gex) catches directional imbalance
+    - proximity keeps the map useful near current price
+    """
     if exposure_df.empty:
         return []
     tmp = exposure_df.copy()
-    tmp["abs_gex"] = tmp["net_gex"].abs()
-    tmp = tmp.sort_values("abs_gex", ascending=False)
+    fut_strike = tmp["strike"].astype(float) * scale_ratio
+    tmp["abs_net_gex"] = tmp["net_gex"].abs()
+    tmp["prox"] = 1.0 / (1.0 + (fut_strike - current_price).abs())
+    tmp["rank_score"] = (tmp["total_gex"].abs() * 0.58) + (tmp["abs_net_gex"] * 0.34) + (tmp["total_gex"].abs().max() * tmp["prox"] * 0.08)
+    tmp = tmp.sort_values("rank_score", ascending=False)
     levels = []
     for _, row in tmp.iterrows():
         lvl = _round_to_tick(float(row["strike"]) * scale_ratio, tick)
@@ -325,6 +334,8 @@ def write_outputs(levels: GammaLevelSet) -> None:
 
     quick_parts = [
         f"SRC={levels.source}",
+        f"SYMBOL={levels.symbol}",
+        f"PRICE={levels.futures_price}",
         f"CR={levels.call_resistance}",
         f"PS={levels.put_support}",
         f"HVL={levels.hvl_gamma_flip}",
@@ -333,10 +344,11 @@ def write_outputs(levels: GammaLevelSet) -> None:
         f"ZWALL={levels.zero_dte_gamma_wall}",
         f"MAX={levels.expected_move_high}",
         f"MIN={levels.expected_move_low}",
+        "GEX_COUNT=10",
     ]
     for i, lvl in enumerate(levels.gex_levels, start=1):
         quick_parts.append(f"GEX{i}={lvl}")
-    quick_path.write_text(";".join(quick_parts), encoding="utf-8")
+    quick_path.write_text(";".join(quick_parts) + ";", encoding="utf-8")
 
     print(f"[OK] Wrote {json_path}, {csv_path}, {txt_path}, {quick_path}")
 
