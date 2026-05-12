@@ -274,6 +274,7 @@ def write_outputs(levels: GammaLevelSet) -> None:
     json_path = OUT_DIR / f"{prefix}_levels.json"
     csv_path = OUT_DIR / f"{prefix}_levels.csv"
     txt_path = OUT_DIR / f"{prefix}_pine_manual_backup.txt"
+    quick_path = OUT_DIR / f"{prefix}_quick_paste.txt"
     latest_path = OUT_DIR / f"latest_{prefix.lower()}.json"
 
     data = asdict(levels)
@@ -321,7 +322,23 @@ def write_outputs(levels: GammaLevelSet) -> None:
     txt.append(levels.note)
 
     txt_path.write_text("\n".join(txt), encoding="utf-8")
-    print(f"[OK] Wrote {json_path}, {csv_path}, {txt_path}")
+
+    quick_parts = [
+        f"SRC={levels.source}",
+        f"CR={levels.call_resistance}",
+        f"PS={levels.put_support}",
+        f"HVL={levels.hvl_gamma_flip}",
+        f"ZCR={levels.zero_dte_call_wall}",
+        f"ZPS={levels.zero_dte_put_wall}",
+        f"ZWALL={levels.zero_dte_gamma_wall}",
+        f"MAX={levels.expected_move_high}",
+        f"MIN={levels.expected_move_low}",
+    ]
+    for i, lvl in enumerate(levels.gex_levels, start=1):
+        quick_parts.append(f"GEX{i}={lvl}")
+    quick_path.write_text(";".join(quick_parts), encoding="utf-8")
+
+    print(f"[OK] Wrote {json_path}, {csv_path}, {txt_path}, {quick_path}")
 
 
 def main() -> None:
