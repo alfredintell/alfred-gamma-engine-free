@@ -3,7 +3,7 @@
   "futures_symbol": "ES=F",
   "proxy_symbol": "SPY",
   "source": "FREE_PROXY_YAHOO_SPY_OPTIONS_SCALED_TO_ES",
-  "generated_at_utc": "2026-05-29 21:15:19 UTC",
+  "generated_at_utc": "2026-05-29 21:29:12 UTC",
   "futures_price": 7590.75,
   "proxy_price": 756.48,
   "scale_ratio": 10.03430388,
