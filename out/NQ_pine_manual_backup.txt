@@ -1,5 +1,5 @@
 ALFRED GAMMA LEVELS — NQ
-Generated: 2026-06-08 21:17:08 UTC
+Generated: 2026-06-08 21:29:10 UTC
 Source: FREE_PROXY_YAHOO_QQQ_OPTIONS_SCALED_TO_NQ
 
 Paste these into AlfredsEye Option Levels inputs:
