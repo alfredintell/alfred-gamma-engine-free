@@ -1,27 +1,27 @@
 ALFRED GAMMA LEVELS — ES
-Generated: 2026-06-10 23:52:40 UTC
+Generated: 2026-06-11 17:02:58 UTC
 Source: FREE_PROXY_YAHOO_SPY_OPTIONS_SCALED_TO_ES
 
 Paste these into AlfredsEye Option Levels inputs:
 
-Call Resistance / Call Wall: 7268.0
-Put Support / Put Wall: 7258.0
-HVL / Gamma Flip: 6106.75
-0DTE Call Wall: 7268.0
-0DTE Put Wall: 7258.0
-0DTE Gamma Wall: 7258.0
-1D Max / Expected Move High: 7305.75
-1D Min / Expected Move Low: 7218.75
+Call Resistance / Call Wall: 7327.0
+Put Support / Put Wall: 7276.75
+HVL / Gamma Flip: 5821.5
+0DTE Call Wall: 7327.0
+0DTE Put Wall: 7276.75
+0DTE Gamma Wall: 7276.75
+1D Max / Expected Move High: 7335.75
+1D Min / Expected Move Low: 7248.25
 
-GEX 1: 7258.0
-GEX 2: 7278.0
-GEX 3: 7208.0
-GEX 4: 7248.0
-GEX 5: 7268.0
-GEX 6: 7238.0
-GEX 7: 7308.0
-GEX 8: 7298.0
-GEX 9: 7288.0
-GEX 10: 7228.0
+GEX 1: 7276.75
+GEX 2: 7306.75
+GEX 3: 7296.75
+GEX 4: 7286.75
+GEX 5: 7266.75
+GEX 6: 7256.75
+GEX 7: 7317.0
+GEX 8: 7246.75
+GEX 9: 7226.5
+GEX 10: 7236.5
 
 Free proxy level set. Uses ETF options and scales strikes to futures. Not MenthorQ, not exact CME futures options.
