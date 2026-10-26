@@ -1,2 +1,2 @@
 symbol,generated_at_utc,futures_price,call_resistance,put_support,hvl_gamma_flip,zero_dte_call_wall,zero_dte_put_wall,zero_dte_gamma_wall,expected_move_high,expected_move_low,gex_1,gex_2,gex_3,gex_4,gex_5,gex_6,gex_7,gex_8,gex_9,gex_10
-ES,2026-10-26 19:22:13 UTC,7715.25,7718.25,7607.5,7708.25,7718.25,7607.5,7718.25,7761.5,7669.0,7708.25,7718.25,7728.25,7698.0,7607.5,7678.0,7738.5,7688.0,7758.5,7557.0
+ES,2026-10-26 20:31:21 UTC,7714.5,7720.75,7710.75,7710.75,7720.75,7710.75,7720.75,7760.75,7668.25,7710.75,7720.75,7700.75,7731.0,7680.5,7610.0,7690.5,7741.0,7559.5,7761.25
