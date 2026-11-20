@@ -1,5 +1,5 @@
 ALFRED GAMMA LEVELS — NQ
-Generated: 2026-11-20 22:14:56 UTC
+Generated: 2026-11-20 23:59:29 UTC
 Source: FREE_PROXY_YAHOO_QQQ_OPTIONS_SCALED_TO_NQ
 
 Paste these into AlfredsEye Option Levels inputs:
@@ -10,8 +10,8 @@ HVL / Gamma Flip: 14548.25
 0DTE Call Wall: 28223.5
 0DTE Put Wall: 25189.25
 0DTE Gamma Wall: 25355.5
-1D Max / Expected Move High: 25460.75
-1D Min / Expected Move Low: 25121.25
+1D Max / Expected Move High: 25497.75
+1D Min / Expected Move Low: 25084.25
 
 GEX 1: 25355.5
 GEX 2: 25189.25
